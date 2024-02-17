@@ -1,7 +1,17 @@
 import { Container, Main } from "./App";
 import { FiSearch } from 'react-icons/fi';
+import { useState } from "react";
 
 function App() {
+
+  const [input, setInput] = useState("");
+
+  function handleSearch(){
+    if(input === ""){
+      alert("Insira algum Cep")
+      return;
+    }
+  }
 
   return (
     <Container>
@@ -10,9 +20,11 @@ function App() {
         <input 
           type="text"
           placeholder="Digite seu cep.."
+          value={input}
+          onChange={(e)=>setInput(e.target.value)}
         />
 
-        <button className="buttonSearch">
+        <button className="buttonSearch" onClick={handleSearch}>
           <FiSearch size={25} color="#fff"/> 
         </button>
       </div>
